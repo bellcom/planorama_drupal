@@ -25,7 +25,7 @@ function planorama_menu() {
     $items[$path] = array(
       'title' => variable_get('planorama_title', ''),
       'description' => 'Configure planorama module',
-      'access arguments' => array('configure planorama'),
+      'access arguments' => array('access planorama'),
       'page callback' => 'planorama_page',
     );
   }
@@ -34,7 +34,7 @@ function planorama_menu() {
     $items[$path] = array(
       'title' => variable_get('planorama_search_title', ''),
       'description' => 'Configure planorama module',
-      'access arguments' => array('configure planorama'),
+      'access arguments' => array('access planorama'),
       'page callback' => 'planorama_search_page',
     );
   }
@@ -46,7 +46,7 @@ function planorama_menu() {
  * Implements hook_perm()
  */
 function planorama_perm() {
-  return array('configure planorama');
+  return array('configure planorama', 'access planorama');
 }
 
 /**
