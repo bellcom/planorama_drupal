@@ -1,0 +1,214 @@
+<?php
+/**
+ * This module provides integration to planorama webservice.
+ * It is based upon the .NET implementation of the planorama
+ * integration.
+ *
+ * @author Thomas Thune Hansen <tth@bellcom.dk>
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function planorama_menu() {
+  $items = array();
+
+  $items['admin/settings/planorama'] = array(
+    'title' => 'Planorama',
+    'description' => 'Configure planorama module',
+    'access arguments' => array('configure planorama'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('planorama_settings'),
+  );
+
+  if ($path = variable_get('planorama_path', FALSE)) {
+    $items[$path] = array(
+      'title' => variable_get('planorama_title', ''),
+      'description' => 'Configure planorama module',
+      'access arguments' => array('configure planorama'),
+      'page callback' => 'planorama_page',
+    );
+  }
+
+  if ($path = variable_get('planorama_search_path', FALSE)) {
+    $items[$path] = array(
+      'title' => variable_get('planorama_search_title', ''),
+      'description' => 'Configure planorama module',
+      'access arguments' => array('configure planorama'),
+      'page callback' => 'planorama_search_page',
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_perm()
+ */
+function planorama_perm() {
+  return array('configure planorama');
+}
+
+/**
+ * Settings form
+ */
+function planorama_settings() {
+  $form['prefix'] = array(
+    '#type' => 'item',
+    '#description' => 'Please clear caches after updating settings.',
+  );
+
+  $form['planorama_api_key'] = array(
+    '#default_value' => variable_get('planorama_api_key', ''),
+    '#title'         => 'API key',
+    '#type'          => 'textfield',
+  );
+
+  $form['planorama_cid'] = array(
+    '#default_value' => variable_get('planorama_cid', ''),
+    '#title'         => 'CategoryId',
+    '#description'   => 'Default Category id',
+    '#type'          => 'textfield',
+  );
+
+  $form['planorama_path'] = array(
+    '#default_value' => variable_get('planorama_path', ''),
+    '#title'         => 'Local path',
+    '#description'   => 'Enter the path where the planorama integration should be found',
+    '#type'          => 'textfield',
+  );
+
+  $form['planorama_title'] = array(
+    '#default_value' => variable_get('planorama_title', ''),
+    '#title'         => 'Page title',
+    '#type'          => 'textfield',
+  );
+
+  $form['planorama_search_path'] = array(
+    '#default_value' => variable_get('planorama_search_path', ''),
+    '#title'         => 'Local search path',
+    '#description'   => 'Enter the path where the planorama search integration should be found',
+    '#type'          => 'textfield',
+  );
+
+  $form['planorama_search_title'] = array(
+    '#default_value' => variable_get('planorama_search_title', ''),
+    '#title'         => 'Search page title',
+    '#type'          => 'textfield',
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Planorama page
+ */
+function planorama_page() {
+  // Get parameters
+  $local_path = $_GET['q'];
+  // Get planorama url from $path
+  $params['APIKey'] = variable_get('planorama_api_key', '');
+  $params['CatalogId'] = isset($_GET['cid']) ? $_GET['cid'] : variable_get('planorama_cid', '');
+  $params['ParentId'] = isset($_GET['pid']) ? $_GET['pid'] : '-1';
+  $params['TemplateId'] = isset($_GET['tid']) ? $_GET['tid'] : '';
+  $params['ActivityId'] = isset($_GET['signup']) ? $_GET['signup'] : '';
+  $params['Data'] = isset($_POST['planorama_postdata']) ? $_POST['planorama_postdata'] : '';
+
+  $plan_url = planorama_get_remote_url($path);
+  $plan_path = planorama_get_remote_path($params);
+
+
+  drupal_add_js(drupal_get_path('module', 'planorama') . '/js/jquery-1.7.min.js');
+
+  return planorama_get_page($plan_url . $plan_path, $params);
+}
+
+/**
+ * Search page/
+ */
+function planorama_search_page() {
+  $params['APIKey'] = variable_get('planorama_api_key', '');
+  $params['SearchFor'] = isset($_GET['search']) ? $_GET['search'] : '';
+  $params['ShowPath'] = variable_get('planorama_path', '');
+
+  $plan_url = planorama_get_remote_url($path);
+  $plan_path = planorama_get_remote_path($params);
+
+  $page = drupal_get_form('planorama_search');
+  if (!empty($params['SearchFor'])) {
+    $page .= planorama_get_page($plan_url . $plan_path, $params);
+  }
+  return $page;
+}
+
+function planorama_search() {
+  $form['search'] = array(
+    '#type' => 'textfield',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Search'),
+  );
+
+  return $form;
+}
+
+function planorama_search_submit($form, &$form_state) {
+  drupal_goto(variable_get('planorama_search_path', ''), array('search' => $form_state['values']['search']));
+}
+
+/**
+ * Fetch the planorama remote url, specified for the drupal path
+ */
+function planorama_get_remote_url($path) {
+  return 'https://system.planorama.dk/';
+}
+
+/**
+ * Depending on the parameters, we determine where to POST data
+ */
+function planorama_get_remote_path($params) {
+  if (!empty($params['Data'])) {
+    return 'public/public.asmx/Signup';
+  } else if (!empty($params['ActivityId']) && !empty($params['TemplateId'])) {
+    return 'public/public.asmx/GetSignupHtml';
+  } else if (!empty($params['SearchFor'])) {
+    return 'public/public.asmx/SearchWebcatalogs';
+  } else if (!empty($params['TemplateId'])) {
+    return 'public/public.asmx/GetCategoryTemplateHtml';
+  } else {
+    return 'public/public.asmx/GetCatalogHtml';
+  }
+}
+
+/**
+ * Fetch page content from planorama webservice
+ */
+function planorama_get_page($url, $params) {
+  $ch = curl_init();
+  $data = http_build_query($params, '', '&');
+  $header = array(
+    'Content-type: application/x-www-form-urlencoded',
+    'Content-length: ' . strlen($data),
+  );
+
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 30000);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+  $output = curl_exec($ch);
+
+  curl_close($ch);
+
+  return '<form method="post" action="#">'
+            . $output . '
+            <div style="display: none">
+              <input type="hidden" name="planorama_postdata" id="PostData">
+              <input type="submit" name="planorama_submit" value="Submit" id="Submit">
+            </div>
+          </form>';
+}
