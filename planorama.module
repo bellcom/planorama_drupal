@@ -101,6 +101,13 @@ function planorama_settings() {
 }
 
 /**
+ * Implement hook_init()
+ */
+function planorama_init() {
+  drupal_add_css(drupal_get_path('module', 'planorama') . '/css/PlanoramaWebcatalog.css');
+}
+
+/**
  * Planorama page
  */
 function planorama_page() {
@@ -116,7 +123,6 @@ function planorama_page() {
 
   $plan_url = planorama_get_remote_url($path);
   $plan_path = planorama_get_remote_path($params);
-
 
   drupal_add_js(drupal_get_path('module', 'planorama') . '/js/jquery-1.7.min.js');
 

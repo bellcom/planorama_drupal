@@ -1,0 +1,520 @@
+.breadcrumbs, .checkout_breadcrumbs {
+    width: 100%;
+    max-width: 1040px;
+    margin: 10px auto 0px auto;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #f0f0f0;
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+    .breadcrumbs .firstcrumb, .checkout_breadcrumbs .firstcrumb {
+        height: 34px;
+        background: url(/css/images/home.png) left center no-repeat;
+        display: block;
+        width: 18px;
+        float: left;
+        margin-left: 20px;
+        margin-right: 8px;
+    }
+
+    .breadcrumbs .beforecrumb, .checkout_breadcrumbs .beforecrumb {
+        height: 35px;
+        background: url(/css/images/small_arrow.png) center center no-repeat;
+        display: block;
+        width: 10px;
+        float: left;
+    }
+
+    .breadcrumbs .breadcrumb, .checkout_breadcrumbs .breadcrumb {
+        height: 35px;
+        line-height: 37px;
+        padding: 0px 8px;
+        display: block;
+        float: left;
+    }
+
+        .checkout_breadcrumbs .breadcrumb:hover {
+            color: #666;
+        }
+
+        .breadcrumbs .breadcrumb:last-of-type .category_name {
+            color: #1c9998 !important;
+        }
+
+        .checkout_breadcrumbs .breadcrumb.selected .category_name {
+            color: #1c9998 !important;
+        }
+
+    .breadcrumbs .lastcrumb, .checkout_breadcrumbs .lastcrumb {
+        display: block;
+        clear: both;
+    }
+
+.categories, .templates {
+    /*width: 100%;*/
+	width: 1040px;
+    max-width: 1040px;
+    margin: 40px auto 0px auto;
+}
+
+    .categories .category, .templates .template {
+		display: block;
+		float: left;
+		width: 333px;
+		margin-right: 20px;
+		position: relative;
+		margin-bottom: 20px;
+		background: #fff;
+		padding: 0px 0px;
+		height: 179px;
+		-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+		-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+        .categories .category .category_image1, .templates .template .template_image {
+            display: block;
+            float: left;
+        }
+
+            .categories .category .category_image1 img, .templates .template .template_image img {
+                width: 118px;
+				height: 179px;
+            }
+
+        .categories .category.last, .templates .template.last {
+            margin-right: 0;
+        }
+
+        .categories .category .category_name, .templates .template .template_name {
+            padding: 20px 20px 0px 0px;
+			font-family: 'Archivo Narrow', sans-serif;
+			font-size: 15px;
+			line-height: 22px;
+			font-weight: normal;
+			display: block;
+			float: right;
+			width: 180px;
+			color: #000;
+        }
+
+        .categories .category .category_desc, .templates .template .template_desc {
+            display: block;
+			padding: 5px 20px 0px 0px;
+			white-space: pre-wrap;
+			color: #333;
+			float: right;
+			width: 180px;
+			font-size: 13px;
+			line-height: 15px;
+        }
+
+        .categories .category:hover, .templates .template:hover {
+            -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+            -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .categories .category .category_desc .category_more, .templates .template .template_desc .template_more, .templates .template .template_desc .template_price {
+            font-family: 'Archivo Narrow', sans-serif;
+            display: block;
+            background: #f0f0f0 url(/css/images/arrow_1.png) 15px center no-repeat;
+            line-height: 32px;
+            padding-left: 40px;
+            height: 30px;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 0px;
+            width: 173px;
+            border: 1px solid #f0f0f0;
+            right: 0px;
+        }
+
+        .categories .category:hover .category_desc .category_more, .templates .template:hover .template_desc .template_more {
+            color: #1c9998;
+        }
+
+        .templates .template .template_desc .template_price {
+            width: 94px;
+			right: 110px;
+			background: #fff;
+			padding: 0px 0px 0px 10px;
+			font-size: 13px;
+			font-weight: normal;
+			border-left: none;
+        }
+
+        .templates .template .template_desc .template_more {
+            width: 69px;
+			right: 0px;
+        }
+
+            .templates .template .template_desc .template_more.noprice {
+                width: 173px;
+				right: 0px;
+				bottom: 0px;
+            }
+
+#planorama_categorytemplate {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+    #planorama_categorytemplate .template_data, #planorama_categorytemplate .template_checkout {
+        width: 66%;
+        float: left;
+    }
+
+    #planorama_categorytemplate .template_signup {
+        width: 34%;
+        float: left;
+    }
+
+        #planorama_categorytemplate .template_signup .wrap {
+            background: #fff;
+            -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+            margin: 100px 20px 20px 20px;
+        }
+
+    #planorama_categorytemplate .endoftemplate {
+        clear: both;
+    }
+
+    #planorama_categorytemplate .template_image {
+        display: none;
+    }
+
+    #planorama_categorytemplate .template_name {
+        font-family: 'Archivo Narrow', sans-serif;
+        color: #000;
+        font-weight: normal;
+        line-height: 30px;
+        font-size: 30px;
+        display: block;
+        padding: 40px 20px 10px 20px;
+    }
+
+    #planorama_categorytemplate .template_signup_header {
+        font-size: 25px;
+        line-height: 32px;
+        font-family: 'Archivo Narrow', sans-serif;
+        color: #1c9998;
+        padding: 10px 20px 10px 20px;
+        display: block;
+    }
+
+    #planorama_categorytemplate .template_header {
+        font-family: 'Archivo Narrow', sans-serif;
+        color: #000;
+        font-weight: normal;
+        line-height: 20px;
+        font-size: 15px;
+        display: block;
+        padding: 20px 20px 0px 20px;
+    }
+
+    #planorama_categorytemplate .template_desc {
+        padding: 0px 20px 0px 20px;
+        display: block;
+		white-space: pre-line;
+    }
+
+    #planorama_categorytemplate .template_signup ul.courses {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        #planorama_categorytemplate .template_signup ul.courses li {
+            cursor: pointer;
+            background: #fafafa;
+            border-top: 1px solid #ccc;
+            margin: -1px 0px 0px 0px;
+            padding: 5px;
+            text-indent: 0;
+        }
+
+            #planorama_categorytemplate .template_signup ul.courses li:hover, #planorama_categorytemplate .template_signup ul.courses li.selected {
+                background: #1c9998;
+            }
+
+            #planorama_categorytemplate .template_signup ul.courses li input {
+                float: left;
+                clear: both;
+                margin: 5px 10px 0px 5px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            #planorama_categorytemplate .template_signup ul.courses li div {
+                font-family: 'Archivo Narrow', sans-serif;
+                color: #000;
+                font-size: 14px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+                #planorama_categorytemplate .template_signup ul.courses li div.location {
+                    color: #666;
+                    padding-left: 28px;
+                    font-size: 12px;
+                    display: block;
+                }
+
+                #planorama_categorytemplate .template_signup ul.courses li div.seats {
+                    color: red;
+                    padding-left: 28px;
+                    font-size: 12px;
+                }
+
+                #planorama_categorytemplate .template_signup ul.courses li div.deadline {
+                    color: #999;
+                    padding-left: 28px;
+                    font-size: 12px;
+                    display: block;
+                }
+
+            #planorama_categorytemplate .template_signup ul.courses li:hover div, #planorama_categorytemplate .template_signup ul.courses li.selected div {
+                color: #fff;
+            }
+
+    #planorama_categorytemplate .template_checkout .checkout_step {
+        background: #fff;
+        padding: 20px;
+    }
+
+        #planorama_categorytemplate .template_checkout .checkout_step .step_name {
+            font-family: 'Archivo Narrow', sans-serif;
+            color: #000;
+            font-size: 20px;
+            line-height: 25px;
+            display: block;
+            vertical-align: middle;
+            margin: 0px 0px 5px 0px;
+        }
+
+        #planorama_categorytemplate .template_checkout .checkout_step .step_header {
+            font-family: 'Archivo Narrow', sans-serif;
+            color: #000;
+            font-size: 16px;
+            line-height: 20px;
+            display: block;
+            vertical-align: middle;
+            margin: 20px 0px 5px 0px;
+        }
+
+        #planorama_categorytemplate .template_checkout .checkout_step .map {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #planorama_categorytemplate .template_checkout .checkout_step .field {
+            clear: both;
+        }
+
+            #planorama_categorytemplate .template_checkout .checkout_step .field .field_header {
+                font-family: 'Archivo Narrow', sans-serif;
+                color: #000;
+                font-size: 16px;
+                line-height: 30px;
+                display: block;
+                vertical-align: middle;
+                width: 125px;
+                float: left;
+                white-space: nowrap;
+            }
+
+        #planorama_categorytemplate .template_checkout .checkout_step .field1 {
+            padding: 10px 0px;
+        }
+
+        #planorama_categorytemplate .template_checkout .checkout_step .field input {
+            float: left;
+        }
+
+            #planorama_categorytemplate .template_checkout .checkout_step .field input[type='text'] {
+                border: 1px solid #ccc;
+                padding: 0px 5px;
+                width: 507px;
+				margin-bottom: 5px;
+            }
+
+            #planorama_categorytemplate .template_checkout .checkout_step .field input[type='checkbox'] {
+                line-height: 23px;
+                height: 23px;
+                margin-right: 5px;
+                outline: none;
+            }
+
+            #planorama_categorytemplate .template_checkout .checkout_step .field input[type='text'].required {
+                border: 1px solid #E30909;
+                background: #FFDEDE;
+            }
+
+#checkout_field_zip, #checkout_field_other_zip {
+    width: 50px !important;
+}
+
+#checkout_field_city, #checkout_field_other_city {
+    width: 442px !important;
+    margin-left: 4px;
+}
+
+#planorama_categorytemplate .template_checkout .checkout_step .field .endoffield {
+    clear: both;
+    display: block;
+}
+
+.checkout_next, .checkout_prev, .checkout_submit {
+    display: inline-block;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 16px;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+    padding: 7px 0px 5px 0px;
+    text-indent: 10px;
+}
+
+.checkout_prev {
+    background: #f0f0f0;
+    margin-right: 1%;
+    width: 19%;
+}
+
+    .checkout_prev:hover {
+        background: #1c9998;
+        color: #fff;
+    }
+
+.checkout_next, .checkout_submit {
+    background: #f0f0f0 url(/css/images/arrow_1.png) 8px center no-repeat;
+    color: #1c9998;
+    width: 80%;
+    text-indent: 35px;
+}
+
+    .checkout_next:hover, .checkout_submit:hover {
+        background: #1c9998 url(/css/images/arrow_2.png) 8px center no-repeat;
+        color: #fff;
+    }
+
+#handelsebetingelser {
+    text-decoration: underline;
+}
+
+    #handelsebetingelser:hover {
+        text-decoration: none;
+        color: #1c9998 !important;
+    }
+
+#CheckoutLoading {
+    height: 150px;
+    background: #fff url(/css/images/loading.gif) center center no-repeat !important;
+}
+
+#planorama_categorytemplate .template_other_header {
+        font-size: 25px;
+        line-height: 32px;
+        font-family: 'Archivo Narrow', sans-serif;
+        color: #1c9998;
+        padding: 0px 20px 0px 20px;
+        display: block;
+    }
+
+#planorama_categorytemplate .template_other_subheader {
+        font-family: 'Archivo Narrow', sans-serif;
+        padding: 0px 20px 15px 20px;
+        display: block;
+    }
+
+#planorama_categorytemplate .template_other_subheader:first-of-type {
+    padding: 15px 20px 0px 20px;
+}
+
+
+
+#planorama_categorytemplate .template_other {
+        width: 34%;
+        float: left;
+    }
+
+        #planorama_categorytemplate .template_other .wrap {
+            background: #fff;
+            -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+            margin: 89px 20px 20px 20px;
+        }
+
+.planorama_search
+{
+	position: absolute;
+	top: 33px;
+	right: 372px;
+	z-index: 99;
+}
+
+.planorama_search input[type='text']
+{
+	border: 2px solid #999;
+	-webkit-transition: width 200ms ease-in-out;
+    -moz-transition: width 200ms ease-in-out;
+    -o-transition: width 200ms ease-in-out;
+    transition: width 200ms ease-in-out;
+	height: 23px;
+	line-height: 23px;
+	font-size: 13px;
+	width: 23px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background: transparent url(/css/images/search.png) no-repeat 4px 3px;
+	cursor: pointer;
+}
+.planorama_search input[type='text']:focus, .planorama_search input[type='text'].selected {
+	-webkit-transition: width 200ms ease-in-out;
+    -moz-transition: width 200ms ease-in-out;
+    -o-transition: width 200ms ease-in-out;
+    transition: width 200ms ease-in-out;
+	width: 200px;
+	text-indent: 23px;
+	background: #ffffff url(/css/images/search.png) no-repeat 4px 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* EDITOR PROPERTIES - PLEASE DON'T DELETE THIS LINE TO AVOID DUPLICATE PROPERTIES */
