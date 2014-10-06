@@ -125,6 +125,7 @@ function planorama_page() {
   $plan_path = planorama_get_remote_path($params);
 
   drupal_add_js(drupal_get_path('module', 'planorama') . '/js/jquery-1.7.min.js');
+  drupal_add_js(drupal_get_path('module', 'planorama') . '/js/planorama.js');
 
   return planorama_get_page($plan_url . $plan_path, $params);
 }

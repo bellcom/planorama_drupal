@@ -1,123 +1,119 @@
 .breadcrumbs, .checkout_breadcrumbs {
-    width: 100%;
-    max-width: 1040px;
-    margin: 10px auto 0px auto;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background: #f0f0f0;
-    font-family: 'Archivo Narrow', sans-serif;
+  width: 100%;
+  max-width: 1040px;
+  margin: 10px auto 0px auto;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background: #f0f0f0;
 }
 
-    .breadcrumbs .firstcrumb, .checkout_breadcrumbs .firstcrumb {
-        height: 34px;
-        background: url(/css/images/home.png) left center no-repeat;
-        display: block;
-        width: 18px;
-        float: left;
-        margin-left: 20px;
-        margin-right: 8px;
-    }
+.breadcrumbs .firstcrumb, .checkout_breadcrumbs .firstcrumb {
+  height: 34px;
+  background: url(/css/images/home.png) left center no-repeat;
+  display: block;
+  width: 18px;
+  float: left;
+  margin-left: 20px;
+  margin-right: 8px;
+}
 
-    .breadcrumbs .beforecrumb, .checkout_breadcrumbs .beforecrumb {
-        height: 35px;
-        background: url(/css/images/small_arrow.png) center center no-repeat;
-        display: block;
-        width: 10px;
-        float: left;
-    }
+.breadcrumbs .beforecrumb, .checkout_breadcrumbs .beforecrumb {
+  height: 35px;
+  background: url(/css/images/small_arrow.png) center center no-repeat;
+  display: block;
+  width: 10px;
+  float: left;
+}
 
-    .breadcrumbs .breadcrumb, .checkout_breadcrumbs .breadcrumb {
-        height: 35px;
-        line-height: 37px;
-        padding: 0px 8px;
-        display: block;
-        float: left;
-    }
+.breadcrumbs .breadcrumb, .checkout_breadcrumbs .breadcrumb {
+  height: 35px;
+  line-height: 37px;
+  padding: 0px 8px;
+  display: block;
+  float: left;
+}
 
-        .checkout_breadcrumbs .breadcrumb:hover {
-            color: #666;
-        }
+.checkout_breadcrumbs .breadcrumb:hover {
+  color: #666;
+}
 
-        .breadcrumbs .breadcrumb:last-of-type .category_name {
-            color: #1c9998 !important;
-        }
+.breadcrumbs .breadcrumb:last-of-type .category_name {
+  color: #1c9998;
+}
 
-        .checkout_breadcrumbs .breadcrumb.selected .category_name {
-            color: #1c9998 !important;
-        }
+.checkout_breadcrumbs .breadcrumb.selected .category_name {
+  color: #1c9998;
+}
 
-    .breadcrumbs .lastcrumb, .checkout_breadcrumbs .lastcrumb {
-        display: block;
-        clear: both;
-    }
+.breadcrumbs .lastcrumb, .checkout_breadcrumbs .lastcrumb {
+  display: block;
+  clear: both;
+}
 
 .categories, .templates {
-    /*width: 100%;*/
-	width: 1040px;
-    max-width: 1040px;
-    margin: 40px auto 0px auto;
+  width: 1040px;
+  max-width: 1040px;
+  margin: 40px auto 0px auto;
 }
 
-    .categories .category, .templates .template {
-		display: block;
-		float: left;
-		width: 333px;
-		margin-right: 20px;
-		position: relative;
-		margin-bottom: 20px;
-		background: #fff;
-		padding: 0px 0px;
-		height: 179px;
-		-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-		box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-		-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-    }
+.categories .category, .templates .template {
+  display: block;
+  float: left;
+  width: 333px;
+  margin-right: 20px;
+  position: relative;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 0px 0px;
+  height: 179px;
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
 
-        .categories .category .category_image1, .templates .template .template_image {
-            display: block;
-            float: left;
-        }
+.categories .category .category_image1, .templates .template .template_image {
+  display: block;
+  float: left;
+}
 
-            .categories .category .category_image1 img, .templates .template .template_image img {
-                width: 118px;
-				height: 179px;
-            }
+.categories .category .category_image1 img, .templates .template .template_image img {
+  width: 118px;
+  height: 179px;
+}
 
-        .categories .category.last, .templates .template.last {
-            margin-right: 0;
-        }
+.categories .category.last, .templates .template.last {
+  margin-right: 0;
+}
 
-        .categories .category .category_name, .templates .template .template_name {
-            padding: 20px 20px 0px 0px;
-			font-family: 'Archivo Narrow', sans-serif;
-			font-size: 15px;
-			line-height: 22px;
-			font-weight: normal;
-			display: block;
-			float: right;
-			width: 180px;
-			color: #000;
-        }
+.categories .category .category_name, .templates .template .template_name {
+  padding: 20px 20px 0px 0px;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: normal;
+  display: block;
+  float: right;
+  width: 180px;
+  color: #000;
+}
 
-        .categories .category .category_desc, .templates .template .template_desc {
-            display: block;
-			padding: 5px 20px 0px 0px;
-			white-space: pre-wrap;
-			color: #333;
-			float: right;
-			width: 180px;
-			font-size: 13px;
-			line-height: 15px;
-        }
+.categories .category .category_desc, .templates .template .template_desc {
+  display: block;
+  padding: 5px 20px 0px 0px;
+  white-space: pre-wrap;
+  color: #333;
+  float: right;
+  width: 180px;
+  font-size: 13px;
+  line-height: 15px;
+}
 
-        .categories .category:hover, .templates .template:hover {
-            -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-            -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
-        }
+.categories .category:hover, .templates .template:hover {
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+}
 
         .categories .category .category_desc .category_more, .templates .template .template_desc .template_more, .templates .template .template_desc .template_price {
-            font-family: 'Archivo Narrow', sans-serif;
             display: block;
             background: #f0f0f0 url(/css/images/arrow_1.png) 15px center no-repeat;
             line-height: 32px;
@@ -137,23 +133,23 @@
 
         .templates .template .template_desc .template_price {
             width: 94px;
-			right: 110px;
-			background: #fff;
-			padding: 0px 0px 0px 10px;
-			font-size: 13px;
-			font-weight: normal;
-			border-left: none;
+            right: 110px;
+            background: #fff;
+            padding: 0px 0px 0px 10px;
+            font-size: 13px;
+            font-weight: normal;
+            border-left: none;
         }
 
         .templates .template .template_desc .template_more {
             width: 69px;
-			right: 0px;
+            right: 0px;
         }
 
             .templates .template .template_desc .template_more.noprice {
                 width: 173px;
-				right: 0px;
-				bottom: 0px;
+                right: 0px;
+                bottom: 0px;
             }
 
 #planorama_categorytemplate {
@@ -189,7 +185,6 @@
     }
 
     #planorama_categorytemplate .template_name {
-        font-family: 'Archivo Narrow', sans-serif;
         color: #000;
         font-weight: normal;
         line-height: 30px;
@@ -201,14 +196,12 @@
     #planorama_categorytemplate .template_signup_header {
         font-size: 25px;
         line-height: 32px;
-        font-family: 'Archivo Narrow', sans-serif;
         color: #1c9998;
         padding: 10px 20px 10px 20px;
         display: block;
     }
 
     #planorama_categorytemplate .template_header {
-        font-family: 'Archivo Narrow', sans-serif;
         color: #000;
         font-weight: normal;
         line-height: 20px;
@@ -220,7 +213,7 @@
     #planorama_categorytemplate .template_desc {
         padding: 0px 20px 0px 20px;
         display: block;
-		white-space: pre-line;
+        white-space: pre-line;
     }
 
     #planorama_categorytemplate .template_signup ul.courses {
@@ -251,7 +244,6 @@
             }
 
             #planorama_categorytemplate .template_signup ul.courses li div {
-                font-family: 'Archivo Narrow', sans-serif;
                 color: #000;
                 font-size: 14px;
                 display: inline-block;
@@ -288,7 +280,6 @@
     }
 
         #planorama_categorytemplate .template_checkout .checkout_step .step_name {
-            font-family: 'Archivo Narrow', sans-serif;
             color: #000;
             font-size: 20px;
             line-height: 25px;
@@ -298,7 +289,6 @@
         }
 
         #planorama_categorytemplate .template_checkout .checkout_step .step_header {
-            font-family: 'Archivo Narrow', sans-serif;
             color: #000;
             font-size: 16px;
             line-height: 20px;
@@ -317,7 +307,6 @@
         }
 
             #planorama_categorytemplate .template_checkout .checkout_step .field .field_header {
-                font-family: 'Archivo Narrow', sans-serif;
                 color: #000;
                 font-size: 16px;
                 line-height: 30px;
@@ -340,7 +329,7 @@
                 border: 1px solid #ccc;
                 padding: 0px 5px;
                 width: 507px;
-				margin-bottom: 5px;
+                margin-bottom: 5px;
             }
 
             #planorama_categorytemplate .template_checkout .checkout_step .field input[type='checkbox'] {
@@ -371,7 +360,6 @@
 
 .checkout_next, .checkout_prev, .checkout_submit {
     display: inline-block;
-    font-family: 'Archivo Narrow', sans-serif;
     font-size: 16px;
     margin: 20px 0px 0px 0px;
     cursor: pointer;
@@ -419,14 +407,12 @@
 #planorama_categorytemplate .template_other_header {
         font-size: 25px;
         line-height: 32px;
-        font-family: 'Archivo Narrow', sans-serif;
         color: #1c9998;
         padding: 0px 20px 0px 20px;
         display: block;
     }
 
 #planorama_categorytemplate .template_other_subheader {
-        font-family: 'Archivo Narrow', sans-serif;
         padding: 0px 20px 15px 20px;
         display: block;
     }
@@ -452,37 +438,37 @@
 
 .planorama_search
 {
-	position: absolute;
-	top: 33px;
-	right: 372px;
-	z-index: 99;
+    position: absolute;
+    top: 33px;
+    right: 372px;
+    z-index: 99;
 }
 
 .planorama_search input[type='text']
 {
-	border: 2px solid #999;
-	-webkit-transition: width 200ms ease-in-out;
+    border: 2px solid #999;
+    -webkit-transition: width 200ms ease-in-out;
     -moz-transition: width 200ms ease-in-out;
     -o-transition: width 200ms ease-in-out;
     transition: width 200ms ease-in-out;
-	height: 23px;
-	line-height: 23px;
-	font-size: 13px;
-	width: 23px;
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-	background: transparent url(/css/images/search.png) no-repeat 4px 3px;
-	cursor: pointer;
+    height: 23px;
+    line-height: 23px;
+    font-size: 13px;
+    width: 23px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: transparent url(/css/images/search.png) no-repeat 4px 3px;
+    cursor: pointer;
 }
 .planorama_search input[type='text']:focus, .planorama_search input[type='text'].selected {
-	-webkit-transition: width 200ms ease-in-out;
+    -webkit-transition: width 200ms ease-in-out;
     -moz-transition: width 200ms ease-in-out;
     -o-transition: width 200ms ease-in-out;
     transition: width 200ms ease-in-out;
-	width: 200px;
-	text-indent: 23px;
-	background: #ffffff url(/css/images/search.png) no-repeat 4px 3px;
+    width: 200px;
+    text-indent: 23px;
+    background: #ffffff url(/css/images/search.png) no-repeat 4px 3px;
 }
 
 
