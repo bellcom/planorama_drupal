@@ -97,6 +97,12 @@ function planorama_settings() {
     '#type'          => 'textfield',
   );
 
+  $form['planorama_url'] = array(
+    '#default_value' => variable_get('planorama_url', ''),
+    '#title'         => 'Planorama URL',
+    '#type'          => 'textfield',
+  );
+
   return system_settings_form($form);
 }
 
@@ -111,6 +117,7 @@ function planorama_init() {
  * Planorama page
  */
 function planorama_page() {
+  $GLOBALS['conf']['cache'] = FALSE;
   // Get parameters
   $local_path = $_GET['q'];
   // Get planorama url from $path
@@ -134,6 +141,7 @@ function planorama_page() {
  * Search page/
  */
 function planorama_search_page() {
+  $GLOBALS['conf']['cache'] = FALSE;
   $params['APIKey'] = variable_get('planorama_api_key', '');
   $params['SearchFor'] = isset($_GET['search']) ? $_GET['search'] : '';
   $params['ShowPath'] = variable_get('planorama_path', '');
@@ -169,7 +177,7 @@ function planorama_search_submit($form, &$form_state) {
  * Fetch the planorama remote url, specified for the drupal path
  */
 function planorama_get_remote_url($path) {
-  return 'https://system.planorama.dk/';
+  return variable_get('planorama_url', '');
 }
 
 /**
@@ -205,6 +213,7 @@ function planorama_get_page($url, $params) {
   curl_setopt($ch, CURLOPT_POST, 1);
   curl_setopt($ch, CURLOPT_TIMEOUT, 30000);
   curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($ch, CURLOPT_FRESH_CONNECT, 1);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 
   $output = curl_exec($ch);
