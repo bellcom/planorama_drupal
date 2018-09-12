@@ -1,3 +1,4 @@
 name = Planorama
 description = Planorama module for drupal
 core = 6.x
+version = 6.x-1.1

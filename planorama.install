@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Migrating from single page PLANORAMA to multiple page PLANORAMA.
+ * Copying settings into the first PLANORAMA page
+ **/
+function planorama_update_1() {
+  variable_set('planorama_cid_1', variable_get('planorama_cid', ''));
+  variable_set('planorama_path_1', variable_get('planorama_path', ''));
+  variable_set('planorama_title_1', variable_get('planorama_title', ''));
+  variable_set('planorama_search_path_1', variable_get('planorama_search_path', ''));
+}

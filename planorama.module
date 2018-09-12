@@ -6,6 +6,7 @@
  *
  * @author Thomas Thune Hansen <tth@bellcom.dk>
  */
+define('PLANORAMA_PAGES_COUNT', 2);
 
 /**
  * Implements hook_menu()
@@ -21,22 +22,25 @@ function planorama_menu() {
     'page arguments' => array('planorama_settings'),
   );
 
-  if ($path = variable_get('planorama_path', FALSE)) {
-    $items[$path] = array(
-      'title' => variable_get('planorama_title', ''),
-      'description' => 'Configure planorama module',
-      'access arguments' => array('access planorama'),
-      'page callback' => 'planorama_page',
-    );
-  }
-
-  if ($path = variable_get('planorama_search_path', FALSE)) {
-    $items[$path] = array(
-      'title' => variable_get('planorama_search_title', ''),
-      'description' => 'Configure planorama module',
-      'access arguments' => array('access planorama'),
-      'page callback' => 'planorama_search_page',
-    );
+  for ($page_index = 1; $page_index <= PLANORAMA_PAGES_COUNT; $page_index++) {
+    if ($path = variable_get("planorama_path_$page_index", FALSE)) {
+      $items[$path] = array(
+        'title' => variable_get("planorama_title_$page_index", ''),
+        'description' => 'Configure planorama module',
+        'access arguments' => array('access planorama'),
+        'page callback' => 'planorama_page',
+        'page arguments' => array(strval($page_index)),//converting int to string to pass a literal value instead of reference
+      );
+    }
+    if ($path = variable_get("planorama_search_path_$page_index", FALSE)) {
+      $items[$path] = array(
+        'title' => variable_get("planorama_search_title_$page_index", ''),
+        'description' => 'Configure planorama module',
+        'access arguments' => array('access planorama'),
+        'page callback' => 'planorama_search_page',
+        'page arguments' => array(strval($page_index)),//converting int to string to pass a literal value instead of reference
+      );
+    }
   }
 
   return $items;
@@ -64,44 +68,43 @@ function planorama_settings() {
     '#type'          => 'textfield',
   );
 
-  $form['planorama_cid'] = array(
-    '#default_value' => variable_get('planorama_cid', ''),
-    '#title'         => 'CategoryId',
-    '#description'   => 'Default Category id',
-    '#type'          => 'textfield',
-  );
-
-  $form['planorama_path'] = array(
-    '#default_value' => variable_get('planorama_path', ''),
-    '#title'         => 'Local path',
-    '#description'   => 'Enter the path where the planorama integration should be found',
-    '#type'          => 'textfield',
-  );
-
-  $form['planorama_title'] = array(
-    '#default_value' => variable_get('planorama_title', ''),
-    '#title'         => 'Page title',
-    '#type'          => 'textfield',
-  );
-
-  $form['planorama_search_path'] = array(
-    '#default_value' => variable_get('planorama_search_path', ''),
-    '#title'         => 'Local search path',
-    '#description'   => 'Enter the path where the planorama search integration should be found',
-    '#type'          => 'textfield',
-  );
-
-  $form['planorama_search_title'] = array(
-    '#default_value' => variable_get('planorama_search_title', ''),
-    '#title'         => 'Search page title',
-    '#type'          => 'textfield',
-  );
-
   $form['planorama_url'] = array(
     '#default_value' => variable_get('planorama_url', ''),
     '#title'         => 'Planorama URL',
     '#type'          => 'textfield',
   );
+
+  for ($page_index = 1; $page_index <= PLANORAMA_PAGES_COUNT; $page_index++) {
+    $form["planorama_cat_$page_index-fs"] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Category') . ' ' . $page_index,
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
+    $form["planorama_cat_$page_index-fs"]["planorama_cid_$page_index"] = array(
+      '#default_value' => variable_get("planorama_cid_$page_index", ''),
+      '#title'         => 'CategoryId',
+      '#description'   => 'Default Category id',
+      '#type'          => 'textfield',
+    );
+    $form["planorama_cat_$page_index-fs"]["planorama_path_$page_index"] = array(
+      '#default_value' => variable_get("planorama_path_$page_index", ''),
+      '#title'         => 'Local path',
+      '#description'   => 'Enter the path where the planorama integration should be found',
+      '#type'          => 'textfield',
+    );
+    $form["planorama_cat_$page_index-fs"]["planorama_title_$page_index"] = array(
+      '#default_value' => variable_get("planorama_title_$page_index", ''),
+      '#title'         => 'Page title',
+      '#type'          => 'textfield',
+    );
+    $form["planorama_cat_$page_index-fs"]["planorama_search_path_$page_index"] = array(
+      '#default_value' => variable_get("planorama_search_path_$page_index", ''),
+      '#title'         => 'Local search path',
+      '#description'   => 'Enter the path where the planorama search integration should be found',
+      '#type'          => 'textfield',
+    );
+  }
 
   return system_settings_form($form);
 }
@@ -116,13 +119,13 @@ function planorama_init() {
 /**
  * Planorama page
  */
-function planorama_page() {
+function planorama_page($page_index) {
   $GLOBALS['conf']['cache'] = FALSE;
   // Get parameters
   $local_path = $_GET['q'];
   // Get planorama url from $path
   $params['APIKey'] = variable_get('planorama_api_key', '');
-  $params['CatalogId'] = isset($_GET['cid']) ? $_GET['cid'] : variable_get('planorama_cid', '');
+  $params['CatalogId'] = isset($_GET['cid']) ? $_GET['cid'] : variable_get("planorama_cid_$page_index", '');
   $params['ParentId'] = isset($_GET['pid']) ? $_GET['pid'] : '-1';
   $params['TemplateId'] = isset($_GET['tid']) ? $_GET['tid'] : '';
   $params['ActivityId'] = isset($_GET['signup']) ? $_GET['signup'] : '';
@@ -140,23 +143,30 @@ function planorama_page() {
 /**
  * Search page/
  */
-function planorama_search_page() {
+function planorama_search_page($page_index) {
   $GLOBALS['conf']['cache'] = FALSE;
   $params['APIKey'] = variable_get('planorama_api_key', '');
   $params['SearchFor'] = isset($_GET['search']) ? $_GET['search'] : '';
-  $params['ShowPath'] = variable_get('planorama_path', '');
+  $params['ShowPath'] = variable_get("planorama_path_$page_index", '');
 
   $plan_url = planorama_get_remote_url($path);
   $plan_path = planorama_get_remote_path($params);
 
-  $page = drupal_get_form('planorama_search');
+  $page = drupal_get_form('planorama_search', array('page_index' => $page_index));
   if (!empty($params['SearchFor'])) {
     $page .= planorama_get_page($plan_url . $plan_path, $params);
   }
   return $page;
 }
 
-function planorama_search() {
+function planorama_search($form_state, $vars = array()) {
+  $form = array();
+
+  $form['page_index'] = array(
+    '#type' => 'hidden',
+    '#value' => $vars['page_index'],
+  );
+
   $form['search'] = array(
     '#type' => 'textfield',
   );
@@ -170,7 +180,7 @@ function planorama_search() {
 }
 
 function planorama_search_submit($form, &$form_state) {
-  drupal_goto(variable_get('planorama_search_path', ''), array('search' => $form_state['values']['search']));
+  drupal_goto(variable_get('planorama_search_path_' . $form_state['values']['page_index'], ''), array('search' => $form_state['values']['search']));
 }
 
 /**
